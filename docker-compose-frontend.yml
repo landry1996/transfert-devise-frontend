@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: transfert-devise-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: http://localhost:2077
+    ports:
+      - "3000:80"
+    restart: always
+    networks:
+      - transfert-net
+
+networks:
+  transfert-net:
+    external: true
